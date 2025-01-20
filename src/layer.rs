@@ -25,3 +25,19 @@ impl Layer {
             .collect()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_layer_outputs() {
+        let layer = Layer::from_weights(
+            vec![0.0, 0.0, 0.0],
+            vec![vec![0.0, 0.0], vec![0.0, 0.0], vec![0.0, 0.0]],
+        );
+        let inputs = vec![0.0, 0.0];
+        let outputs = layer.outputs(&inputs);
+        assert_eq!(outputs, vec![0.5, 0.5, 0.5]);
+    }
+}
